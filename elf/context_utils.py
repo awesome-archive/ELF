@@ -2,8 +2,7 @@
 # All rights reserved.
 #
 # This source code is licensed under the BSD-style license found in the
-# LICENSE file in the root directory of this source tree. An additional grant
-# of patent rights can be found in the PATENTS file in the same directory.
+# LICENSE file in the root directory of this source tree.
 
 import os
 import sys
@@ -31,8 +30,6 @@ class ContextArgs:
                 ("mcts_verbose_time", dict(action="store_true")),
 
                 ("mcts_use_prior", dict(action="store_true")),
-                ("mcts_baseline",  3.0),
-                ("mcts_baseline_sigma", 0.3),
                 ("mcts_pseudo_games", 0),
                 ("mcts_pick_method", "most_visited"),
             ],
@@ -68,8 +65,6 @@ class ContextArgs:
         mcts.verbose_time = args.mcts_verbose_time
         mcts.save_tree_filename = args.mcts_save_tree_filename
         mcts.use_prior = args.mcts_use_prior
-        mcts.baseline = args.mcts_baseline
-        mcts.baseline_sigma = args.mcts_baseline_sigma
         mcts.pseudo_games = args.mcts_pseudo_games
         mcts.pick_method = args.mcts_pick_method
 

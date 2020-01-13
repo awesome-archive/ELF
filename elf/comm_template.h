@@ -1,10 +1,9 @@
 /**
 * Copyright (c) 2017-present, Facebook, Inc.
 * All rights reserved.
-*
+
 * This source code is licensed under the BSD-style license found in the
-* LICENSE file in the root directory of this source tree. An additional grant
-* of patent rights can be found in the PATENTS file in the same directory.
+* LICENSE file in the root directory of this source tree.
 */
 
 #pragma once
@@ -215,7 +214,10 @@ public:
     // Agent side.
     bool SendDataWaitReply(const Key& key, In& info) {
         auto it = _map.find(key);
-        if (it == _map.end()) return false;
+        if (it == _map.end()) {
+            V_PRINT(_verbose, "[k=" << key << "] seq = " << info.data.newest().seq << " hist_len = " << info.data.size() << ", key[" << key << "] invalid! ");
+            return false;
+        }
         Stat &stats = it->second;
         stats.freq ++;
 

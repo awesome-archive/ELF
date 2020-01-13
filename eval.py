@@ -2,8 +2,7 @@
 # All rights reserved.
 #
 # This source code is licensed under the BSD-style license found in the
-# LICENSE file in the root directory of this source tree. An additional grant
-# of patent rights can be found in the PATENTS file in the same directory.
+# LICENSE file in the root directory of this source tree.
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -24,6 +23,7 @@ if __name__ == '__main__':
 
     model = env["model_loaders"][0].load_model(GC.params)
     env["mi"].add_model("actor", model, cuda=not args.gpu is None, gpu_id=args.gpu)
+    env["mi"]["actor"].eval()
 
     def actor(batch):
         reply = evaluator.actor(batch)

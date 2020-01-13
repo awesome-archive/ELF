@@ -1,3 +1,11 @@
+/**
+* Copyright (c) 2017-present, Facebook, Inc.
+* All rights reserved.
+
+* This source code is licensed under the BSD-style license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+
 #pragma once
 
 #include <string>
@@ -25,10 +33,6 @@ struct TSOptions {
     string pick_method = "most_visited";
     bool use_prior = false;
 
-    // [TODO] Some hack here.
-    float baseline = 3.0;
-    float baseline_sigma = 0.3;
-
     // Pre-added pseudo playout.
     int pseudo_games = 0;
 
@@ -44,11 +48,10 @@ struct TSOptions {
       ss << "Persistent tree: " << elf_utils::print_bool(persistent_tree) << endl;
       ss << "#Pseudo game: " << pseudo_games << endl;
       ss << "Pick method: " << pick_method << endl;
-      ss << "Baseline: " << baseline << ", baseline_sigma: " << baseline_sigma << endl;
       return ss.str();
     }
 
-    REGISTER_PYBIND_FIELDS(max_num_moves, num_threads, num_rollout_per_thread, verbose, persistent_tree, pick_method, use_prior, baseline, baseline_sigma, pseudo_games, verbose_time, save_tree_filename);
+    REGISTER_PYBIND_FIELDS(max_num_moves, num_threads, num_rollout_per_thread, verbose, persistent_tree, pick_method, use_prior, pseudo_games, verbose_time, save_tree_filename);
 };
 
 } // namespace mcts
